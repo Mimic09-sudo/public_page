@@ -442,28 +442,36 @@
         </div>
 
     </div>
+<div class="popup" id="popup">
 
-    <div class="popup" id="popup">
+    <div class="popup-card">
 
-        <div class="popup-card">
+        <h2>THANK YOU</h2>
 
-            <h2>THANK YOU</h2>
+        <p>
+            참가 신청 링크가 열렸음.<br>
+            설문 작성 ㄱㄱ
+        </p>
 
-            <p>
-                참가 신청 링크가 열렸음.<br>
-                설문 작성 ㄱㄱ
-            </p>
+        <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
 
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0b2Z5xCEwf9Mi-pzqdypRGNF12AlaXlIvhPbkJeouAKBsBw/viewform"
-                target="_blank" class="btn primary">
+                target="_blank"
+                class="btn primary">
 
                 OPEN FORM
 
             </a>
 
+            <button class="btn secondary" onclick="closePopup()">
+                CLOSE
+            </button>
+
         </div>
 
     </div>
+
+</div>
 
     <script>
 
@@ -489,7 +497,9 @@
         function openPopup() {
             document.getElementById("popup").classList.add("active");
         }
-
+        function closePopup() {
+    document.getElementById("popup").classList.remove("active");
+}
     </script>
 
 </body>
