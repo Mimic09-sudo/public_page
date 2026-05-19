@@ -1,292 +1,497 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MIMIC EVENT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뭘봐 임마</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Pretendard:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
 
-body{
-    background:#050816;
-    color:white;
-    font-family:'Pretendard',sans-serif;
-    overflow-x:hidden;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body::before{
-    content:"";
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:
-    radial-gradient(circle at top left,#7f5af0 0%,transparent 30%),
-    radial-gradient(circle at bottom right,#2cb67d 0%,transparent 30%);
-    opacity:0.15;
-    z-index:-2;
-}
+        body {
+            background: #040816;
+            color: white;
+            font-family: 'SUIT', sans-serif;
+            overflow-x: hidden;
+        }
 
-.grid{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size:40px 40px;
-    z-index:-1;
-}
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at top left, #7f5af0 0%, transparent 35%),
+                radial-gradient(circle at bottom right, #00c2ff 0%, transparent 35%);
+            opacity: 0.15;
+            z-index: -3;
+        }
 
-.container{
-    width:100%;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:40px 20px;
-}
+        .noise {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 35px 35px;
+            z-index: -2;
+        }
 
-.card{
-    width:100%;
-    max-width:1200px;
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    border-radius:30px;
-    overflow:hidden;
-    box-shadow:0 0 80px rgba(127,90,240,0.2);
-}
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
 
-.hero{
-    padding:100px 60px;
-    position:relative;
-}
+        .card {
+            width: 100%;
+            max-width: 1250px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(24px);
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+            box-shadow:
+                0 0 80px rgba(127, 90, 240, 0.2),
+                inset 0 0 50px rgba(255, 255, 255, 0.02);
+        }
 
-.badge{
-    display:inline-block;
-    padding:10px 20px;
-    border-radius:999px;
-    background:rgba(127,90,240,0.15);
-    border:1px solid rgba(127,90,240,0.4);
-    color:#b8a8ff;
-    margin-bottom:30px;
-    font-size:14px;
-    letter-spacing:2px;
-}
+        .glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #7f5af0;
+            filter: blur(220px);
+            opacity: 0.18;
+            top: -200px;
+            right: -150px;
+        }
 
-h1{
-    font-family:'Orbitron',sans-serif;
-    font-size:90px;
-    line-height:1;
-    margin-bottom:20px;
-    background:linear-gradient(to right,#ffffff,#7f5af0);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        .hero {
+            padding: 110px 70px 80px;
+            position: relative;
+        }
 
-.sub{
-    color:#9ca3af;
-    font-size:22px;
-    line-height:1.6;
-    max-width:700px;
-}
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: rgba(127, 90, 240, 0.12);
+            border: 1px solid rgba(127, 90, 240, 0.4);
+            color: #c4b5fd;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+        }
 
-.buttons{
-    margin-top:50px;
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #7f5af0;
+            box-shadow: 0 0 15px #7f5af0;
+        }
 
-.btn{
-    padding:18px 35px;
-    border-radius:15px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.3s;
-    font-size:16px;
-}
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 110px;
+            line-height: 0.95;
+            margin-bottom: 25px;
+            letter-spacing: -5px;
+            background: linear-gradient(to right, #ffffff, #7f5af0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(127, 90, 240, 0.4);
+        }
 
-.primary{
-    background:#7f5af0;
-    color:white;
-    box-shadow:0 0 25px rgba(127,90,240,0.5);
-}
+        .korean {
+            font-size: 26px;
+            color: #9ca3af;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
 
-.primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 40px rgba(127,90,240,0.8);
-}
+        .desc {
+            color: #94a3b8;
+            font-size: 20px;
+            line-height: 1.8;
+            max-width: 700px;
+        }
 
-.secondary{
-    border:1px solid rgba(255,255,255,0.15);
-    color:white;
-    background:rgba(255,255,255,0.04);
-}
+        .countdown {
+            margin-top: 60px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-.secondary:hover{
-    background:rgba(255,255,255,0.08);
-    transform:translateY(-5px);
-}
+        .time-box {
+            width: 130px;
+            height: 130px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+        }
 
-.info{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    padding:0 60px 60px;
-}
+        .time-box:hover {
+            transform: translateY(-8px);
+            border-color: #7f5af0;
+            box-shadow: 0 0 30px rgba(127, 90, 240, 0.2);
+        }
 
-.box{
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:20px;
-    padding:30px;
-    transition:0.3s;
-}
+        .time-box h2 {
+            font-size: 42px;
+            color: #7f5af0;
+            margin-bottom: 8px;
+        }
 
-.box:hover{
-    transform:translateY(-10px);
-    border-color:#7f5af0;
-    box-shadow:0 0 30px rgba(127,90,240,0.2);
-}
+        .time-box span {
+            color: #94a3b8;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
 
-.box h2{
-    margin-bottom:15px;
-    font-size:22px;
-}
+        .buttons {
+            margin-top: 60px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-.box p{
-    color:#9ca3af;
-    line-height:1.7;
-}
+        .btn {
+            padding: 20px 38px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.footer{
-    text-align:center;
-    padding:40px;
-    border-top:1px solid rgba(255,255,255,0.08);
-    color:#6b7280;
-}
+        .primary {
+            background: linear-gradient(135deg, #7f5af0, #5b3df5);
+            color: white;
+            box-shadow: 0 0 30px rgba(127, 90, 240, 0.45);
+        }
 
-.glow{
-    position:absolute;
-    width:400px;
-    height:400px;
-    background:#7f5af0;
-    filter:blur(180px);
-    opacity:0.2;
-    top:-100px;
-    right:-100px;
-    z-index:-1;
-}
+        .primary:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 50px rgba(127, 90, 240, 0.7);
+        }
 
-@media(max-width:768px){
+        .secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
 
-    .hero{
-        padding:70px 30px;
-    }
+        .secondary:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.08);
+        }
 
-    h1{
-        font-size:55px;
-    }
+        .info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            padding: 0 70px 70px;
+        }
 
-    .sub{
-        font-size:18px;
-    }
+        .box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 35px;
+            transition: 0.3s;
+        }
 
-    .info{
-        padding:0 30px 30px;
-    }
+        .box:hover {
+            transform: translateY(-10px);
+            border-color: #7f5af0;
+            box-shadow: 0 0 40px rgba(127, 90, 240, 0.15);
+        }
 
-}
+        .box h2 {
+            font-size: 15px;
+            letter-spacing: 3px;
+            color: #7f5af0;
+            margin-bottom: 18px;
+        }
 
-</style>
+        .box p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            padding: 35px;
+            color: #64748b;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .popup.active {
+            display: flex;
+        }
+
+        .popup-card {
+            width: 90%;
+            max-width: 500px;
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 55px;
+            text-align: center;
+            animation: pop 0.35s ease;
+        }
+
+        .popup-card h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+            color: #7f5af0;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .popup-card p {
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            font-size: 18px;
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(0.75);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media(max-width:900px) {
+
+            .hero {
+                padding: 80px 35px 60px;
+            }
+
+            .info {
+                padding: 0 35px 35px;
+            }
+
+            h1 {
+                font-size: 70px;
+            }
+
+            .desc {
+                font-size: 18px;
+            }
+
+            .time-box {
+                width: 100px;
+                height: 100px;
+            }
+
+            .time-box h2 {
+                font-size: 32px;
+            }
+
+        }
+    </style>
+
 </head>
 
 <body>
 
-<div class="grid"></div>
+    <div class="noise"></div>
 
-<div class="container">
+    <div class="container">
 
-    <div class="card">
-
-        <section class="hero">
+        <div class="card">
 
             <div class="glow"></div>
 
-            <div class="badge">
-                PRIVATE EVENT
-            </div>
+            <section class="hero">
 
-            <h1>
-                MIMIC<br>
-                PARTY
-            </h1>
+                <div class="tag">
+                    <div class="dot"></div>
+                    nice
+                </div>
 
-            <p class="sub">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Reiciendis, aliquid. Modern cyber styled invitation landing page.
-            </p>
+                <h1>
+                    Good<br>
+                    site
+                </h1>
 
-            <div class="buttons">
+                <div class="korean">
+                    지호 생일파티
+                </div>
 
-                <a href="#" class="btn primary">
-                    JOIN EVENT
-                </a>
-
-                <a href="#" class="btn secondary">
-                    VIEW DETAILS
-                </a>
-
-            </div>
-
-        </section>
-
-        <section class="info">
-
-            <div class="box">
-                <h2>DATE</h2>
-                <p>
-                    2026.06.xx<br>
-                    PM 07:00
+                <p class="desc">
+                    오는 사람 없으면 파토냄<br>
                 </p>
+
+                <div class="countdown">
+
+                    <div class="time-box">
+                        <h2 id="days">00</h2>
+                        <span>DAYS</span>
+                    </div>
+
+                    <div class="time-box">
+                        <h2 id="hours">00</h2>
+                        <span>HOURS</span>
+                    </div>
+
+                    <div class="time-box">
+                        <h2 id="minutes">00</h2>
+                        <span>MINUTES</span>
+                    </div>
+
+                    <div class="time-box">
+                        <h2 id="seconds">00</h2>
+                        <span>SECONDS</span>
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0b2Z5xCEwf9Mi-pzqdypRGNF12AlaXlIvhPbkJeouAKBsBw/viewform"
+                        target="_blank" class="btn primary" onclick="openPopup()">
+
+                        참석여부 (이상한거 아님)
+
+                    </a>
+
+                    <a href="https://discord.gg/wet9k6FUg" target="_blank" class="btn secondary">
+
+                        DISCORD
+
+                    </a>
+
+                </div>
+
+            </section>
+
+            <section class="info">
+
+                <div class="box">
+                    <h2>LOCATION</h2>
+                    <p>
+                        위치는 나중에 공지함<br>
+                        서울 어딘가
+                    </p>
+                </div>
+
+                <div class="box">
+                    <h2>NOTICE</h2>
+                    <p>
+                        문의는 디코나 DM.<br>
+                        늦으면 미리 말하기.
+                    </p>
+                </div>
+
+            </section>
+
+            <div class="footer">
+                CREATED BY JIHO
             </div>
 
-            <div class="box">
-                <h2>LOCATION</h2>
-                <p>
-                    Seoul<br>
-                    Somewhere Building
-                </p>
-            </div>
-
-            <div class="box">
-                <h2>DRESS CODE</h2>
-                <p>
-                    Black / Neon<br>
-                    Casual Street
-                </p>
-            </div>
-
-        </section>
-
-        <div class="footer">
-            CREATED BY MIMIC
         </div>
 
     </div>
 
-</div>
+    <div class="popup" id="popup">
+
+        <div class="popup-card">
+
+            <h2>THANK YOU</h2>
+
+            <p>
+                참가 신청 링크가 열렸음.<br>
+                설문 작성 ㄱㄱ
+            </p>
+
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0b2Z5xCEwf9Mi-pzqdypRGNF12AlaXlIvhPbkJeouAKBsBw/viewform"
+                target="_blank" class="btn primary">
+
+                OPEN FORM
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const targetDate = new Date("2026-06-04T00:00:00").getTime();
+
+        setInterval(() => {
+
+            const now = new Date().getTime();
+            const gap = targetDate - now;
+
+            const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((gap % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+        }, 1000);
+
+        function openPopup() {
+            document.getElementById("popup").classList.add("active");
+        }
+
+    </script>
 
 </body>
+
 </html>
