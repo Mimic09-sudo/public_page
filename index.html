@@ -192,6 +192,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            border: none;
+            cursor: pointer;
         }
 
         .primary {
@@ -398,14 +400,13 @@
 
                 <div class="buttons">
 
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0b2Z5xCEwf9Mi-pzqdypRGNF12AlaXlIvhPbkJeouAKBsBw/viewform"
-                        target="_blank" class="btn primary" onclick="openPopup()">
-
+                    <button class="btn primary" onclick="openPopup()">
                         참석여부 (이상한거 아님)
+                    </button>
 
-                    </a>
-
-                    <a href="https://discord.gg/wet9k6FUg" target="_blank" class="btn secondary">
+                    <a href="https://discord.gg/wet9k6FUg"
+                        target="_blank"
+                        class="btn secondary">
 
                         DISCORD
 
@@ -442,36 +443,41 @@
         </div>
 
     </div>
-<div class="popup" id="popup">
 
-    <div class="popup-card">
+    <div class="popup" id="popup" onclick="closePopup()">
 
-        <h2>THANK YOU</h2>
+        <div class="popup-card" onclick="event.stopPropagation()">
 
-        <p>
-            참가 신청 링크가 열렸음.<br>
-            설문 작성 ㄱㄱ
-        </p>
+            <h2>THANK YOU</h2>
 
-        <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+            <p>
+                참가 신청 링크가 열렸음.<br>
+                설문 작성 ㄱㄱ
+            </p>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0b2Z5xCEwf9Mi-pzqdypRGNF12AlaXlIvhPbkJeouAKBsBw/viewform"
-                target="_blank"
-                class="btn primary">
+            <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
 
-                OPEN FORM
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0b2Z5xCEwf9Mi-pzqdypRGNF12AlaXlIvhPbkJeouAKBsBw/viewform"
+                    target="_blank"
+                    class="btn primary">
 
-            </a>
+                    OPEN FORM
 
-            <button class="btn secondary" onclick="closePopup()">
-                CLOSE
-            </button>
+                </a>
+
+                <button type="button"
+                    class="btn secondary"
+                    onclick="closePopup()">
+
+                    CLOSE
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
     <script>
 
@@ -497,9 +503,11 @@
         function openPopup() {
             document.getElementById("popup").classList.add("active");
         }
+
         function closePopup() {
-    document.getElementById("popup").classList.remove("active");
-}
+            document.getElementById("popup").classList.remove("active");
+        }
+
     </script>
 
 </body>
