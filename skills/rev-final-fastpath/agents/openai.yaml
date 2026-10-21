@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rev Final Fastpath"
+  short_description: "Verified CTF reversing, solvers, and writeups"
+  default_prompt: "Use $rev-final-fastpath to solve this reversing challenge through the cheapest scalable path, verify it on the original target, and produce a reproducible solver and writeup."

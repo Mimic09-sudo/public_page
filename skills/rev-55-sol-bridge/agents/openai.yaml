@@ -1,0 +1,6 @@
+interface:
+  display_name: "Rev 5.5 Sol Bridge"
+  short_description: "Verified CTF rev solves at maximum throughput"
+  default_prompt: "Use $rev-55-sol-bridge to solve this authorized reversing CTF in ctf-speed mode."
+policy:
+  allow_implicit_invocation: true

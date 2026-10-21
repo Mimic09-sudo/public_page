@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "name": "TBD",
+    "category": "TBD",
+    "difficulty": "TBD",
+    "status": "blocked",
+    "created_at": "TBD",
+    "updated_at": "TBD"
+  },
+  "design": {
+    "learning_objective": null,
+    "intended_path": [],
+    "anti_goals": [],
+    "estimated_solve_time_minutes": null
+  },
+  "safety": {
+    "allowed_environment": "local CTF lab only",
+    "forbidden_behaviors": [],
+    "external_dependencies": []
+  },
+  "flag": {
+    "format": "SCA{...}",
+    "source_ref": "private/flag.local.txt",
+    "value_redacted": null,
+    "placement": null
+  },
+  "artifacts": {
+    "source": [],
+    "private": [],
+    "dist": [],
+    "checksums": []
+  },
+  "build": {
+    "commands": [],
+    "logs": [],
+    "status": "not_started"
+  },
+  "validation": {
+    "solver": null,
+    "commands": [],
+    "logs": [],
+    "status": "not_started",
+    "clean_environment": null
+  },
+  "release": {
+    "package": null,
+    "public_description": null,
+    "hints": [],
+    "audit_logs": [],
+    "status": "not_started"
+  },
+  "reports": {
+    "author_report": "report.md",
+    "public_writeup": "writeup.md",
+    "status": "not_started"
+  },
+  "next_actions": [
+    "Fill challenge name and category",
+    "Define intended solve path",
+    "Create reproducible build script"
+  ]
+}

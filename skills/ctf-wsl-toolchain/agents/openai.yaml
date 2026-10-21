@@ -1,0 +1,7 @@
+interface:
+  display_name: "CTF WSL Toolchain"
+  short_description: "Base WSL runtime for every local CTF solve"
+  default_prompt: "Use $ctf-wsl-toolchain as the execution base while applying the appropriate CTF solver workflow."
+
+policy:
+  allow_implicit_invocation: true

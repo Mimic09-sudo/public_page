@@ -1,0 +1,7 @@
+interface:
+  display_name: "Resume Progress Log"
+  short_description: "Keep every active task resumable after interruption"
+  default_prompt: "Use $resume-progress-log alongside the task workflow and maintain a concise recovery journal while working."
+
+policy:
+  allow_implicit_invocation: true

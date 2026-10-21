@@ -1,0 +1,4 @@
+interface:
+  display_name: "CTF Challenge Creator"
+  short_description: "Create safe, reproducible CTF challenges with logs and reports"
+  default_prompt: "Create a CTF challenge using the required authoring workflow, logs, validation, release audit, and reports."
